@@ -2,38 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juicelabs — Design & Code Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juicelabs — Creative Studio</title>
   <style>
+    /* Body Background Animation */
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0e0e0e;
-      color: #f1f1f1;
       margin: 0;
       padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #f1f1f1;
+      background: linear-gradient(-45deg, #0e0e0e, #1a1a1a, #e52e71, #ff8a00);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
     }
 
-    header {
-      background: linear-gradient(to top #ff8a00, #e52e71);
-      padding: 20px;
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Welcome Section */
+    #welcome {
       text-align: center;
+      padding: 60px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-      letter-spacing: 2px;
+    #welcome h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
     }
 
-    header p {
-      font-style: italic;
+    #welcome p {
       font-size: 1.2em;
+      margin-bottom: 20px;
     }
 
-    section {
+    #welcome button {
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #0e0e0e;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+      border: 2px solid #fff;
+      transition: 0.3s;
+    }
+
+    #welcome button:hover {
+      background-color: #ff8a00;
+      border-color: #e52e71;
+    }
+
+    /* Inner Page Content */
+    #innerPage {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
       padding: 40px 20px;
       max-width: 900px;
       margin: auto;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 12px;
+    }
+
+    #innerPage.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
@@ -66,34 +107,53 @@
 </head>
 <body>
 
-  <header>
+  <!-- Welcome Section -->
+  <section id="welcome">
     <h1>JUICELABS</h1>
     <p>Where Pixles and Codes Flow</p>
-  </header>
-
-  <section>
-    <h2>💡 About Us</h2>
-    <p>
-      At Juicelabs, we blend striking visuals with powerful code to craft beautiful, functional websites and designs that stand out. From startups to growing brands, we power digital success.
-    </p>
+    <button onclick="showInnerPage()">Let's Build Together</button>
   </section>
 
-  <section>
-    <h2>🔧 Our Services</h2>
-    <ul>
-      <li>✔️ Website Design & Development (HTML, CSS, WordPress)</li>
-      <li>✔️ E-commerce Store Setup</li>
-      <li>✔️ Branding & Logo Creation</li>
-      <li>✔️ UI/UX Design & Prototyping</li>
-      <li>✔️ Responsive Landing Pages</li>
-      <li>✔️ Social Media Graphics</li>
-      <li>✔️ Website Maintenance & Support</li>
-    </ul>
+  <!-- Inner Page Section (Animated Reveal) -->
+  <section id="innerPage">
+    <section id="about">
+      <h2>💡 About Us</h2>
+      <p>
+        At Juicelabs, we blend striking visuals with powerful code to craft beautiful, functional websites and designs that stand out. From startups to growing brands, we power digital success.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>🔧 Our Services</h2>
+      <ul>
+        <li>✔️ Website Design & Development (HTML, CSS, WordPress)</li>
+        <li>✔️ E-commerce Store Setup</li>
+        <li>✔️ Branding & Logo Creation</li>
+        <li>✔️ UI/UX Design & Prototyping</li>
+        <li>✔️ Responsive Landing Pages</li>
+        <li>✔️ Social Media Graphics</li>
+        <li>✔️ Website Maintenance & Support</li>
+      </ul>
+    </section>
   </section>
 
   <footer>
-    © 2025 Juicelabs. Built by MASTER JUICE 💻
+    © 2025 Juicelabs. Built by MASTER JUICE 💻🎨
   </footer>
+
+  <script>
+    function showInnerPage() {
+      const welcome = document.getElementById("welcome");
+      const innerPage = document.getElementById("innerPage");
+
+      welcome.style.display = "none";
+      innerPage.style.display = "block";
+
+      setTimeout(() => {
+        innerPage.classList.add("show");
+      }, 50);
+    }
+  </script>
 
 </body>
 </html>
